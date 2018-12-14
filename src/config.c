@@ -152,7 +152,7 @@ static void parse_argument(int c, char* value, PCONFIGURATION config) {
     config->app = value;
     break;
   case 'I':
-    config->app_id = value;
+    config->app_id = atoi(value);
     break;
   case 'j':
     if (config->inputsCount >= MAX_INPUTS) {
