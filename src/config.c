@@ -49,7 +49,8 @@ static struct option long_options[] = {
   {"height", required_argument, NULL, 'd'},
   {"bitrate", required_argument, NULL, 'g'},
   {"packetsize", required_argument, NULL, 'h'},
-  {"app", required_argument, NULL, 'i'},
+  {"app", 1, NULL, 'i'},
+  {"appid", required_argument, NULL, 'I'},
   {"input", required_argument, NULL, 'j'},
   {"mapping", required_argument, NULL, 'k'},
   {"nosops", no_argument, NULL, 'l'},
@@ -149,6 +150,9 @@ static void parse_argument(int c, char* value, PCONFIGURATION config) {
     break;
   case 'i':
     config->app = value;
+    break;
+  case 'I':
+    config->app_id = value;
     break;
   case 'j':
     if (config->inputsCount >= MAX_INPUTS) {

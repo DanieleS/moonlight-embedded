@@ -62,7 +62,7 @@ static void applist(PSERVER_DATA server) {
   }
 
   for (int i = 1;list != NULL;i++) {
-    printf("%d. %s\n", i, list->name);
+    printf("%d. [%d] %s\n", i, list->id list->name);
     list = list->next;
   }
 }
@@ -84,7 +84,10 @@ static int get_app_id(PSERVER_DATA server, const char *name) {
 }
 
 static void stream(PSERVER_DATA server, PCONFIGURATION config, enum platform system) {
-  int appId = get_app_id(server, config->app);
+  int appId = config->app_id;
+  if(appId == NULL){
+    appId = get_app_id(server, config->app);
+  }
   if (appId<0) {
     fprintf(stderr, "Can't find app %s\n", config->app);
     exit(-1);
@@ -166,6 +169,7 @@ static void help() {
   printf("\t-packetsize <size>\tSpecify the maximum packetsize in bytes\n");
   printf("\t-codec <codec>\t\tSelect used codec: auto/h264/h265 (default auto)\n");
   printf("\t-remote\t\t\tEnable remote optimizations\n");
+  printf("\t-appid <app>\t\tId of app to stream\n");
   printf("\t-app <app>\t\tName of app to stream\n");
   printf("\t-nosops\t\t\tDon't allow GFE to modify game settings\n");
   printf("\t-localaudio\t\tPlay audio locally\n");

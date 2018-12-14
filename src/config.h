@@ -29,6 +29,7 @@ typedef struct _CONFIGURATION {
   STREAM_CONFIGURATION stream;
   int debug_level;
   char* app;
+  char* app_id;
   char* action;
   char* address;
   char* mapping;
