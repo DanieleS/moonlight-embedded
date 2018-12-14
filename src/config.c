@@ -311,6 +311,7 @@ void config_parse(int argc, char* argv[], PCONFIGURATION config) {
   config->debug_level = 0;
   config->platform = "auto";
   config->app = "Steam";
+  config->app_id = -1;
   config->action = NULL;
   config->address = NULL;
   config->config_file = NULL;

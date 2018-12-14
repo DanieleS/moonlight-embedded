@@ -85,7 +85,7 @@ static int get_app_id(PSERVER_DATA server, const char *name) {
 
 static void stream(PSERVER_DATA server, PCONFIGURATION config, enum platform system) {
   int appId = config->app_id;
-  if(appId == 0){
+  if(appId == -1){
     appId = get_app_id(server, config->app);
   }
   if (appId<0) {
